@@ -3,21 +3,25 @@
  */
 package com.jeetemplates.javaee.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Singleton;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.transaction.Transactional;
 
+import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.persistence.HelloWorldDao;
 import com.jeetemplates.javaee.service.HelloWorldService;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.util.LoggerUtils;
+import com.jeetemplates.javaee.util.MapperUtils;
 
 /**
  * Implementation of {@link HelloWorldService}
  * 
  * @author jeetemplates
  */
-@Singleton
+@Named
 public class HelloWorldServiceImpl implements HelloWorldService {
 
     /* ************************************ */
@@ -27,32 +31,41 @@ public class HelloWorldServiceImpl implements HelloWorldService {
     /**
      * {@link HelloWorldDao}
      */
-    // @Inject
-    // private HelloWorldDao helloWorldDao;
-
-    private List<HelloWorldDTO> listHellos = new ArrayList<HelloWorldDTO>();
+    @Inject
+    private HelloWorldDao helloWorldDao;
 
     /* ************************************ */
     /* Methods */
     /* ************************************ */
 
-     @Override
-    // @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public void create(HelloWorldDTO dto) {
+    @Override
+    @Transactional
+    public void create(HelloWorld entity) {
         LoggerUtils.logStartMethod("create");
-        // helloWorldDao.create(entity);
-        listHellos.add(dto);
+        helloWorldDao.create(entity);
         LoggerUtils.logEndMethod("create");
     }
 
     @Override
     public List<HelloWorldDTO> retrieveAll() {
         LoggerUtils.logStartMethod("retrieveAll");
-        // List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
-        // List<HelloWorldDTO> returnValue = (List<HelloWorldDTO>)
-        // MapperUtils.mapAsList(listEntities, HelloWorldDTO.class);
+        List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
+        @SuppressWarnings("unchecked")
+        List<HelloWorldDTO> returnValue = (List<HelloWorldDTO>) MapperUtils.mapAsList(listEntities, HelloWorldDTO.class);
         LoggerUtils.logEndMethod("retrieveAll");
-        return listHellos;
+        return returnValue;
+    }
+
+    /* ************************************ */
+    /* Getters & Setters */
+    /* ************************************ */
+
+    /**
+     * @param helloWorldDao
+     *            the helloWorldDao to set
+     */
+    public void setHelloWorldDao(HelloWorldDao helloWorldDao) {
+        this.helloWorldDao = helloWorldDao;
     }
 
 }

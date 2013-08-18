@@ -5,6 +5,7 @@ package com.jeetemplates.javaee.service;
 
 import java.util.List;
 
+import com.jeetemplates.javaee.domain.model.HelloWorld;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 
 /**
@@ -14,19 +15,19 @@ import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
  */
 public interface HelloWorldService {
 
-	/**
-	 * Create an entity hello world
-	 * 
-	 * @param entity
-	 *            : entity to create
-	 */
-	void create(HelloWorldDTO entity);
+    /**
+     * Create an entity hello world
+     * 
+     * @param entity
+     *            : entity to create
+     */
+    void create(HelloWorld entity);
 
-	/**
-	 * Retrieve hello world.
-	 * 
-	 * @return
-	 */
-	List<HelloWorldDTO> retrieveAll();
+    /**
+     * Retrieve hello world.
+     * 
+     * @return
+     */
+    List<HelloWorldDTO> retrieveAll();
 
 }

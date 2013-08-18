@@ -3,17 +3,18 @@
  */
 package com.jeetemplates.javaee.web.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.FacesException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.jeetemplates.javaee.domain.model.HelloWorld;
 import com.jeetemplates.javaee.service.HelloWorldService;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
+import com.jeetemplates.javaee.util.LoggerUtils;
+import com.jeetemplates.javaee.util.MapperUtils;
 import com.jeetemplates.javaee.web.form.HelloWorldForm;
 
 /**
@@ -23,12 +24,7 @@ import com.jeetemplates.javaee.web.form.HelloWorldForm;
  */
 @Named
 @RequestScoped
-public class WelcomeController implements Serializable {
-
-    /**
-     * Serial UID.
-     */
-    private static final long serialVersionUID = -5812423521893870934L;
+public class WelcomeController {
 
     /* ************************************ */
     /* Dependencies */
@@ -38,33 +34,44 @@ public class WelcomeController implements Serializable {
      * {@link HelloWorldService}
      */
     @Inject
-    private HelloWorldForm helloWorldForm;
+    private HelloWorldService helloWorldService;
 
     /**
-     * {@link HelloWorldService}.
+     * {@link HelloWorldService}
      */
     @Inject
-    private HelloWorldService helloWorldService;
+    private HelloWorldForm helloWorldForm;
 
     /* ************************************ */
     /* Attributes */
     /* ************************************ */
 
+    /**
+     * List of hellos
+     */
+    private List<HelloWorldDTO> listHellos;
+
     /* ************************************ */
     /* Methods */
     /* ************************************ */
 
-    /**
-     * Create hello.
-     * 
-     * @return welcome view
-     */
     public String createHello() {
-        HelloWorldDTO dto = new HelloWorldDTO();
-        dto.setFirstName(helloWorldForm.getFirstName());
-        dto.setLastName(helloWorldForm.getLastName());
-        helloWorldService.create(dto);
+        helloWorldService.create((HelloWorld) MapperUtils.map(helloWorldForm, HelloWorld.class));
         return "welcome?faces-redirect=true";
+    }
+
+    /**
+     * Retrieve hello dto
+     * 
+     * @return list of hello dto
+     */
+    public List<HelloWorldDTO> retrieveList() {
+        // Prevent multiple calls from JSF
+        if (listHellos == null) {
+            LoggerUtils.logDebug("Initialize hello world list for display");
+            listHellos = helloWorldService.retrieveAll();
+        }
+        return listHellos;
     }
 
     /**
@@ -91,15 +98,6 @@ public class WelcomeController implements Serializable {
     }
 
     /**
-     * Retrieve hello dto
-     * 
-     * @return list of hello dto
-     */
-    public List<HelloWorldDTO> retrieveList() {
-        return helloWorldService.retrieveAll();
-    }
-
-    /**
      * Throw {@link FacesException}.
      * 
      * @return outcome "welcome"
@@ -114,6 +112,10 @@ public class WelcomeController implements Serializable {
 
     public void setHelloWorldForm(HelloWorldForm helloWorldForm) {
         this.helloWorldForm = helloWorldForm;
+    }
+
+    public void setHelloWorldService(HelloWorldService helloWorldService) {
+        this.helloWorldService = helloWorldService;
     }
 
 }

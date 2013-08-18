@@ -10,7 +10,7 @@ import com.jeetemplates.javaee.domain.model.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
 
 /**
- * Hibernate implementation of {@link HelloWorldDao}
+ * Implementation of {@link HelloWorldDao}.
  * 
  * @author jeetemplates
  */
