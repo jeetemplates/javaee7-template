@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title><h:outputText value="#{i18n['home.head.title']}" /></title>
+</h:head>
+<h:body>
+
+	<ui:composition template="/pages/template/layout.xhtml">
+	
+		<ui:define name="content">
+			<h3><h:outputText value="#{i18n['home.content.title']}" /></h3>
+			<!-- ##################################################### -->
+			<!-- #################### Simple form #################### -->
+			<!-- ##################################################### -->
+			<u><h:outputText value="#{i18n['home.content.simple_form']}" /></u>
+			<h:form id="simple_form">
+				<label for="simple_form:first_name">
+					<h:outputText value="#{i18n['home.content.form.first_name']}" /> :
+				</label>
+				<h:inputText id="first_name" value="#{helloWorldForm.firstName}"></h:inputText>
+				<br/>
+				<label for="simple_form:last_name">
+					<h:outputText value="#{i18n['home.content.form.last_name']}" /> :
+				</label>
+				<h:inputText id="last_name" value="#{helloWorldForm.lastName}"></h:inputText>
+				<br/>
+				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{welcomeController.createHello()}" />
+			</h:form>
+			<br/>
+			<!-- ##################################################### -->
+			<!-- ##################### Ajax form ##################### -->
+			<!-- ##################################################### -->
+			<u><h:outputText value="#{i18n['home.content.ajax_form']}" /></u>
+			<h:form id="ajax_form">
+				<label for="ajax_form:ajax_first_name">
+					<h:outputText value="#{i18n['home.content.form.first_name']}" /> :
+				</label>
+				<h:inputText id="ajax_first_name" value="#{helloWorldForm.firstName}"></h:inputText>
+				<br/>
+				<label for="ajax_form:ajax_last_name">
+					<h:outputText value="#{i18n['home.content.form.last_name']}" /> :
+				</label>
+				<h:inputText id="ajax_last_name" value="#{helloWorldForm.lastName}"></h:inputText>
+				<br/>
+				<!-- In the execute, add list of id which will be submitted, separated with white spaces -->
+				<h:commandButton value="#{i18n['home.content.ajax_form.submit']}">
+					<f:ajax execute="ajax_form:ajax_first_name ajax_form:ajax_last_name" render="output" />
+				</h:commandButton>
+				<br />
+				<h:outputText id="output" value="#{welcomeController.displayHelloAjax()}" />
+			</h:form>
+			<br/>
+			<!-- ########################################################## -->
+			<!-- #################### Handle exception #################### -->
+			<!-- ########################################################## -->
+			<u><h:outputText value="#{i18n['home.content.handle_exception']}" /></u>
+			<h:form>
+				<h:commandButton value="#{i18n['home.content.form.throw_exception']}" action="#{welcomeController.throwException()}" />
+			</h:form>
+			<br/>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
