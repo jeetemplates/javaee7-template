@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import com.jeetemplates.javaee.domain.model.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
@@ -38,6 +39,7 @@ public class HelloWorldServiceImpl implements HelloWorldService {
     /* ************************************ */
 
     @Override
+    @Transactional
     public void create(HelloWorld entity) {
         LoggerUtils.logStartMethod("create");
         helloWorldDao.create(entity);
