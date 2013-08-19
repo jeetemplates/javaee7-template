@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import com.jeetemplates.javaee.validation.Email;
+
 /**
  * Hello world form
  * 
@@ -31,6 +33,12 @@ public class HelloWorldForm implements Serializable {
      * First name.
      */
     private String firstName;
+
+    /**
+     * Email.
+     */
+    @Email
+    private String email;
 
     /**
      * @return the lastName
@@ -60,6 +68,21 @@ public class HelloWorldForm implements Serializable {
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email
+     *            the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

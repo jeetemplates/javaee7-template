@@ -5,5 +5,6 @@ javaee7-template
 - JPA
 - JSF
 - JAX-RS
+- Bean Validation
 
 Deployment descriptors in utils

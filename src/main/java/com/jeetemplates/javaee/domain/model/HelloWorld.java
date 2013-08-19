@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.jeetemplates.javaee.common.model.BusinessEntity;
+import com.jeetemplates.javaee.validation.Email;
 
 /**
  * Hello entity.
@@ -32,6 +33,11 @@ public class HelloWorld extends BusinessEntity {
 	 * First name.
 	 */
 	private String firstName;
+	
+	/**
+	 * Email.
+	 */
+	private String email;
 
 	/**
 	 * @return the lastName
@@ -64,5 +70,20 @@ public class HelloWorld extends BusinessEntity {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+    /**
+     * @return the email
+     */
+	@Column(name = "EMAIL")
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }

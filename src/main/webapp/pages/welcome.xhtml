@@ -17,6 +17,7 @@
 				<h:dataTable value="#{welcomeController.retrieveList()}" var="hello">
 					<h:column>#{hello.firstName}</h:column>
 					<h:column>#{hello.lastName}</h:column>
+					<h:column>#{hello.email}</h:column>
 				</h:dataTable>
 				<br />
 				<h:link outcome="home"><h:outputText value="#{i18n['welcome.content.link_home']}" /></h:link>

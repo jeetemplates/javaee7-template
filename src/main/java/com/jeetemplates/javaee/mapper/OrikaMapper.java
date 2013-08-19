@@ -25,6 +25,7 @@ public class OrikaMapper extends ConfigurableMapper {
 				.classMap(HelloWorld.class, HelloWorldDTO.class)
 				.field("lastName", "lastName")
 				.field("firstName", "firstName")
+				.field("email", "email")
 				.toClassMap());
 		
 		// register class maps, Mappers, ObjectFactories, and Converters
@@ -32,6 +33,7 @@ public class OrikaMapper extends ConfigurableMapper {
 				.classMap(HelloWorld.class, HelloWorldForm.class)
 				.field("lastName", "lastName")
 				.field("firstName", "firstName")
+				.field("email", "email")
 				.toClassMap());
 	}
 

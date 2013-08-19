@@ -29,6 +29,12 @@
 				</label>
 				<h:inputText id="last_name" value="#{helloWorldForm.lastName}"></h:inputText>
 				<br/>
+				<label for="simple_form:email">
+					<h:outputText value="#{i18n['home.content.form.email']}" /> :
+				</label>
+				<h:inputText id="email" value="#{helloWorldForm.email}"></h:inputText>
+				<h:message for="email" />
+				<br/>
 				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{welcomeController.createHello()}" />
 			</h:form>
 			<br/>
