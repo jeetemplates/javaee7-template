@@ -1,0 +1,9 @@
+<webservices xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/javaee_web_services_1_4.xsd"
+	version="1.4">
+
+
+	<!-- JAX-WS 2.2 -->
+
+</webservices>

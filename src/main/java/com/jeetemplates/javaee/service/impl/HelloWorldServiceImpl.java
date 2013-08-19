@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import com.jeetemplates.javaee.domain.model.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
+import com.jeetemplates.javaee.rest.api.HelloWorldServiceRest;
 import com.jeetemplates.javaee.service.HelloWorldService;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.util.LoggerUtils;
@@ -22,7 +23,7 @@ import com.jeetemplates.javaee.util.MapperUtils;
  * @author jeetemplates
  */
 @Named
-public class HelloWorldServiceImpl implements HelloWorldService {
+public class HelloWorldServiceImpl implements HelloWorldService, HelloWorldServiceRest {
 
     /* ************************************ */
     /* Dependencies */

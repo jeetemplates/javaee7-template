@@ -1,4 +1,9 @@
 javaee7-template
 ================
+- CDI
+- JTA
+- JPA
+- JSF
+- JAX-RS
 
-Java EE 7 Template
+Deployment descriptors in utils
