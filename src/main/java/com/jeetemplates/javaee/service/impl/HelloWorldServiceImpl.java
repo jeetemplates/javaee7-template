@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
 import com.jeetemplates.javaee.rest.api.HelloWorldServiceRest;
 import com.jeetemplates.javaee.service.HelloWorldService;

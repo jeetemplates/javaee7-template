@@ -10,7 +10,7 @@ import javax.faces.FacesException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.service.HelloWorldService;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.util.LoggerUtils;

@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.jeetemplates.javaee.common.persistence.BaseDaoTest;
-import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.domain.HelloWorld;
 
 /**
  * Test of {@link HelloWorldDao}.

@@ -1,14 +1,13 @@
 /**
  * 
  */
-package com.jeetemplates.javaee.domain.model;
+package com.jeetemplates.javaee.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.jeetemplates.javaee.common.model.BusinessEntity;
-import com.jeetemplates.javaee.validation.Email;
+import com.jeetemplates.javaee.common.domain.BusinessEntity;
 
 /**
  * Hello entity.

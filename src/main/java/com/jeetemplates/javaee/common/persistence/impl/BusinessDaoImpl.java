@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.jeetemplates.javaee.common.model.BusinessEntity;
+import com.jeetemplates.javaee.common.domain.BusinessEntity;
 import com.jeetemplates.javaee.common.persistence.BusinessDao;
 
 /**

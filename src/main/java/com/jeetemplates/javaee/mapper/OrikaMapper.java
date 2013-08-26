@@ -7,7 +7,7 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
-import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.web.form.HelloWorldForm;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.javaee.common.model;
+package com.jeetemplates.javaee.common.domain;
 
 import java.io.Serializable;
 

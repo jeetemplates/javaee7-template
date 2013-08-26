@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import com.jeetemplates.javaee.common.service.BaseServiceTest;
-import com.jeetemplates.javaee.domain.model.HelloWorld;
+import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
 import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.service.impl.HelloWorldServiceImpl;

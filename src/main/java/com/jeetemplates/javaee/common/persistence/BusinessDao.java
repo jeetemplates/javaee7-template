@@ -5,7 +5,7 @@ package com.jeetemplates.javaee.common.persistence;
 
 import java.util.List;
 
-import com.jeetemplates.javaee.common.model.BusinessEntity;
+import com.jeetemplates.javaee.common.domain.BusinessEntity;
 
 /**
  * Generic DAO Interface. CRUD methods.
