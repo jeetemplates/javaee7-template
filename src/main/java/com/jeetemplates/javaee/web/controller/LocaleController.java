@@ -17,7 +17,7 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class HeaderController implements Serializable {
+public class LocaleController implements Serializable {
 
     /**
      * Serial UID.

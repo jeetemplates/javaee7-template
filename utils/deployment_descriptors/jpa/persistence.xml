@@ -5,5 +5,91 @@
 
 	<!-- JPA 2.1 -->
 	<!-- Place it under META-INF -->
+<!-- 	javax.persistence.schema-generation-action 	Controls action to be taken by persistence provider 	"none", "create", "drop-and-create", "drop" -->
+<!-- 	javax.persistence.schema-generation-target 	Controls whether schema to be created in database, whether DDL scripts are to be created, or both 	"database", "scripts", "database-and-scripts" -->
+
+<!-- 	Additional properties can be used to define target location of DDL scripts:    -->
+<!-- 	javax.persistence.ddl-create-script-target 	Controls target locations for database create scripts 	java.io.Writer or URL strings -->
+<!-- 	javax.persistence.ddl-drop-script-target 	Controls target locations for database drop scripts 	java.io.Writer or URL strings -->
+
+<!-- 	Finally the following properties can be used to specify the source location of DDL scripts:    -->
+<!-- 	javax.persistence.ddl-create-script-source 	Controls source locations for database create scripts 	java.io.Reader or URL strings -->
+<!-- 	javax.persistence.ddl-drop-script-source 	Controls source locations for database drop scripts 	java.io.Reader or URL strings -->
+
+<!-- 8.2.1.9 properties -->
+<!-- The properties element is used to specify both standard and vendor-specific properties and hints -->
+<!-- that apply to the persistence unit and its entity manager factory configuration. -->
+<!-- The following properties and hints defined by this specification are intended for use in both Java EE and -->
+<!-- Java SE environments: -->
+<!-- • javax.persistence.lock.timeout — value in milliseconds for pessimistic lock timeout. This is a hint only. -->
+
+<!-- • javax.persistence.query.timeout — value in milliseconds for query timeout. This is a hint only. -->
+
+<!-- • javax.persistence.validation.group.pre-persist — groups that are targeted for validation upon the pre-persist event (overrides the default behavior). -->
+
+<!-- • javax.persistence.validation.group.pre-update — groups that are targeted for validation upon the pre-update event (overrides the default behavior). -->
+
+<!-- • javax.persistence.validation.group.pre-remove — groups that are targeted for validation upon the pre-remove event (overrides the default behavior). -->
+<!-- The following properties defined by this specification are intended for use in Java SE environments. -->
+
+<!-- • javax.persistence.jdbc.driver — fully qualified name of the driver class -->
+
+<!-- • javax.persistence.jdbc.url — driver-specific URL -->
+
+<!-- • javax.persistence.jdbc.user — username used by database connection -->
+
+<!-- • javax.persistence.jdbc.password — password for database connection valida- tion -->
+<!-- Scripts for use in schema generation may be specified using the javax.persistence.schema-generation.create-script-source and -->
+<!-- javax.persistence.schema-generation.drop-script-source properties.  -->
+<!-- A script to specify SQL for the bulk loading of data may be specified by the javax.persistence.sql-load-script-sourceproperty.  -->
+<!-- These properties are intended for use in both Java EE and Java SE environments: -->
+
+<!-- • javax.persistence.schema-generation.create-script-source — name of a script packaged as part of the persistence application or a string corresponding to a file URL string that designates a script. -->
+
+<!-- • javax.persistence.schema-generation.drop-script-source — name of a script packaged as part of the persistence application or a string corresponding to a file URL string that designates a script. -->
+<!-- Entity Packaging Java Persistence 2.1, Final Release Persistence Unit Packaging 4/2/13 370 JSR-338 Final Release Oracle -->
+
+<!-- • javax.persistence.sql-load-script-source — name of a script packaged as part of the persistence unit or a string corresponding to a file URL string that designates a script. -->
+<!-- When scripts are packaged as part of the persistence application, these properties must specify locationsrelative to the root of the persistence unit.  -->
+<!-- When scripts are provided externally (or when schema generation is to occur into script files, as described below), strings corresponding to file URLs must be speci-fied.  -->
+<!-- In Java EE environments, such file URL specifications must be absolute paths (not relative). -->
+<!-- In Java EE environments, all source and target file locations must be accessible to the application server deploying the persistence unit. -->
+<!-- In general, it is expected that schema generation will be initiated by means of the APIs described in Section 9.4.  -->
+<!-- However, schema generation actions may also be specified by means of the following properties used in the persistence.xml file. -->
+
+<!-- • javax.persistence.schema-generation.database.action -->
+<!-- The javax.persistence.schema-generation.database.action property specifies the action to be taken by the persistence provider with regard to the database artifacts. -->
+<!-- The values for this property are none,create,drop-and-create,drop.  -->
+<!-- If this property is not specified, it is assumed that schema generation is not needed or will be initiated by -->
+<!-- other means, and, by default, no schema generation actions will be taken on the database. (See Section 9.4.) -->
+
+<!-- • javax.persistence.schema-generation.scripts.action -->
+<!-- The javax.persistence.schema-generation.scripts.action property specifies which scripts are to be generated by the persistence provider.  -->
+<!-- The values for this property are none,create,drop-and-create,drop.  -->
+<!-- A script will only be generated if the script target is specified.  -->
+<!-- If this property is not specified, it is assumed that script generation is not needed or will be initiated by other means, and, by default, no scripts will be generated. (See Section 9.4.) -->
+
+<!-- • javax.persistence.schema-generation.create-source -->
+<!-- The javax.persistence.schema-generation.create-source property specifies whether the creation  -->
+<!-- of database artifacts is to occur on the basis of the object/relational mapping metadata, DDL script, or a combination of the two.  -->
+<!-- The values for this property are metadata,script,metadata-then-script,script-then-metadata.  -->
+<!-- If this property is not specified, and a script is specified by the -->
+<!-- javax.persistence.schema-generation.create-script-source property, the script (only) will be used for schema generation;  -->
+<!-- otherwise if this property is not specified, schema generation will occur on the basis of the object/relational mapping metadata (only).  -->
+<!-- The meta-data-then-script and script-then-metadata values specify that a combination of metadata and script is to be used and the order in which this use is to occur.  -->
+<!-- If either of these values is specified and the resulting database actions are not disjoint, the results are undefined and schema generation may fail. -->
+
+<!-- • javax.persistence.schema-generation.drop-source -->
+<!-- The javax.persistence.schema-generation.drop-source property specifies whether the dropping  -->
+<!-- of database artifacts is to occur on the basis of the object/relational map- ping metadata, DDL script, or a combination of the two.  -->
+<!-- The values for this property are Persistence Unit Packaging Java Persistence 2.1, Final Release Entity Packaging JSR-338 Final Release 371 4/2/13 Oracle -->
+<!-- metadata,script,metadata-then-script,script-then-metadata.  -->
+<!-- If this property is not specified, and a script is specified by the javax.persistence.schema-generation.drop-script-source property, the script (only) will -->
+<!-- be used for the dropping of database artifacts; otherwise if this property is not specified, the dropping of database artifacts will occur on the basis of the object/relational mapping metadata (only).  -->
+<!-- The metadata-then-script and script-then-metadata values specify that a combination of metadata and script is to be used and the order in which this use is to occur. -->
+<!-- If either of these values is specified and the resulting database actions are not disjoint, the results are undefined and the dropping of database artifacts may fail. -->
+
+<!-- • javax.persistence.schema-generation.scripts.create-target, javax.persistence.schema-generation.scripts.drop-target -->
+<!-- If scripts are to be generated, the target locations for the writing of these scripts must be specified. These targets are specified as strings corresponding to file URLs -->
 
 </persistence>

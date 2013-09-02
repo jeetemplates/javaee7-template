@@ -15,7 +15,6 @@ import org.mockito.Mockito;
 import com.jeetemplates.javaee.common.service.BaseServiceTest;
 import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
-import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 import com.jeetemplates.javaee.service.impl.HelloWorldServiceImpl;
 
 /**
@@ -25,60 +24,60 @@ import com.jeetemplates.javaee.service.impl.HelloWorldServiceImpl;
  */
 public class HelloWorldServiceTest extends BaseServiceTest {
 
-	/* ************************************************************** */
-	/* Service to test */
-	/* ************************************************************** */
+    /* ************************************************************** */
+    /* Service to test */
+    /* ************************************************************** */
 
-	/**
-	 * {@link HelloWorldService}.
-	 */
-	private HelloWorldServiceImpl helloWorldService;
+    /**
+     * {@link HelloWorldService}.
+     */
+    private HelloWorldServiceImpl helloWorldService;
 
-	/**
-	 * Init.
-	 */
-	@Before
-	public void init() {
-		helloWorldService = new HelloWorldServiceImpl();
-		helloWorldService.setHelloWorldDao(mockHelloWorldDao);
-	}
+    /**
+     * Init.
+     */
+    @Before
+    public void init() {
+        helloWorldService = new HelloWorldServiceImpl();
+        helloWorldService.setHelloWorldDao(mockHelloWorldDao);
+    }
 
-	/* ************************************************************** */
-	/* Mocks */
-	/* ************************************************************** */
+    /* ************************************************************** */
+    /* Mocks */
+    /* ************************************************************** */
 
-	/**
-	 * {@link HelloWorldDao}.
-	 */
-	@Mock
+    /**
+     * {@link HelloWorldDao}.
+     */
+    @Mock
     private HelloWorldDao mockHelloWorldDao;
 
-	/* ************************************************************** */
-	/* Methods */
-	/* ************************************************************** */
+    /* ************************************************************** */
+    /* Methods */
+    /* ************************************************************** */
 
-	/**
-	 * Test of method {@link HelloWorldService#retrieveAll()}.
-	 */
-	@Test
-	public void testRetrieveAll() {
-		// Mock result
-		List<HelloWorld> mockResult = new ArrayList<HelloWorld>();
-		HelloWorld mockHello = new HelloWorld();
-		mockHello.setFirstName("first name");
-		mockHello.setLastName("last name");
-		mockResult.add(mockHello);
+    /**
+     * Test of method {@link HelloWorldService#retrieveAll()}.
+     */
+    @Test
+    public void testRetrieveAll() {
+        // Mock result
+        List<HelloWorld> mockResult = new ArrayList<HelloWorld>();
+        HelloWorld mockHello = new HelloWorld();
+        mockHello.setFirstName("first name");
+        mockHello.setLastName("last name");
+        mockResult.add(mockHello);
 
-		// Mock call method
-		Mockito.when(mockHelloWorldDao.retrieveAll()).thenReturn(mockResult);
+        // Mock call method
+        Mockito.when(mockHelloWorldDao.retrieveAll()).thenReturn(mockResult);
 
-		// Call service
-		List<HelloWorldDTO> result = helloWorldService.retrieveAll();
+        // Call service
+        List<HelloWorld> result = helloWorldService.retrieveAll();
 
-		Assert.assertNotNull(result);
-		Assert.assertEquals(1, result.size());
-		Assert.assertEquals("first name", result.get(0).getFirstName());
-		Assert.assertEquals("last name", result.get(0).getLastName());
-	}
+        Assert.assertNotNull(result);
+        Assert.assertEquals(1, result.size());
+        Assert.assertEquals("first name", result.get(0).getFirstName());
+        Assert.assertEquals("last name", result.get(0).getLastName());
+    }
 
 }

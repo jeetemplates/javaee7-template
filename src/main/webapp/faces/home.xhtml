@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 
-	<ui:composition template="/pages/template/layout.xhtml">
+	<ui:composition template="/faces/template/layout.xhtml">
 	
 		<ui:define name="content">
 			<h3><h:outputText value="#{i18n['home.content.title']}" /></h3>
@@ -20,22 +20,24 @@
 			<u><h:outputText value="#{i18n['home.content.simple_form']}" /></u>
 			<h:form id="simple_form">
 				<label for="simple_form:first_name">
-					<h:outputText value="#{i18n['home.content.form.first_name']}" /> :
+					<h:outputText value="#{i18n['home.content.form.first_name']} :" />
 				</label>
-				<h:inputText id="first_name" value="#{helloWorldForm.firstName}"></h:inputText>
+				<h:inputText id="first_name" value="#{homeController.newHello.firstName}"></h:inputText>
+				<h:message for="first_name" />
 				<br/>
 				<label for="simple_form:last_name">
-					<h:outputText value="#{i18n['home.content.form.last_name']}" /> :
+					<h:outputText value="#{i18n['home.content.form.last_name']} :" />
 				</label>
-				<h:inputText id="last_name" value="#{helloWorldForm.lastName}"></h:inputText>
+				<h:inputText id="last_name" value="#{homeController.newHello.lastName}"></h:inputText>
+				<h:message for="last_name" />
 				<br/>
 				<label for="simple_form:email">
-					<h:outputText value="#{i18n['home.content.form.email']}" /> :
+					<h:outputText value="#{i18n['home.content.form.email']} :" />
 				</label>
-				<h:inputText id="email" value="#{helloWorldForm.email}"></h:inputText>
+				<h:inputText id="email" value="#{homeController.newHello.email}"></h:inputText>
 				<h:message for="email" />
 				<br/>
-				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{welcomeController.createHello()}" />
+				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{homeController.createHello()}" />
 			</h:form>
 			<br/>
 			<!-- ##################################################### -->
@@ -44,21 +46,21 @@
 			<u><h:outputText value="#{i18n['home.content.ajax_form']}" /></u>
 			<h:form id="ajax_form">
 				<label for="ajax_form:ajax_first_name">
-					<h:outputText value="#{i18n['home.content.form.first_name']}" /> :
+					<h:outputText value="#{i18n['home.content.form.first_name']} " />
 				</label>
-				<h:inputText id="ajax_first_name" value="#{helloWorldForm.firstName}"></h:inputText>
+				<h:inputText id="ajax_first_name" value="#{homeController.ajaxHello.firstName}"></h:inputText>
 				<br/>
 				<label for="ajax_form:ajax_last_name">
-					<h:outputText value="#{i18n['home.content.form.last_name']}" /> :
+					<h:outputText value="#{i18n['home.content.form.last_name']} :" />
 				</label>
-				<h:inputText id="ajax_last_name" value="#{helloWorldForm.lastName}"></h:inputText>
+				<h:inputText id="ajax_last_name" value="#{homeController.ajaxHello.lastName}"></h:inputText>
 				<br/>
 				<!-- In the execute, add list of id which will be submitted, separated with white spaces -->
 				<h:commandButton value="#{i18n['home.content.ajax_form.submit']}">
 					<f:ajax execute="ajax_form:ajax_first_name ajax_form:ajax_last_name" render="output" />
 				</h:commandButton>
 				<br />
-				<h:outputText id="output" value="#{welcomeController.displayHelloAjax()}" />
+				<h:outputText id="output" value="#{homeController.displayHelloAjax()}"/>
 			</h:form>
 			<br/>
 			<!-- ########################################################## -->
@@ -66,7 +68,7 @@
 			<!-- ########################################################## -->
 			<u><h:outputText value="#{i18n['home.content.handle_exception']}" /></u>
 			<h:form>
-				<h:commandButton value="#{i18n['home.content.form.throw_exception']}" action="#{welcomeController.throwException()}" />
+				<h:commandButton value="#{i18n['home.content.form.throw_exception']}" action="#{homeController.throwException()}" />
 			</h:form>
 			<br/>
 			<h:outputLink id="jax-rs-link" value="#{request.contextPath}/rest/hello/retrieveAll"><h:outputText value="#{i18n['home.content.rest']}" /></h:outputLink>

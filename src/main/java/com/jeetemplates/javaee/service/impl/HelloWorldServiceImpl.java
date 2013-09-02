@@ -5,24 +5,22 @@ package com.jeetemplates.javaee.service.impl;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.transaction.Transactional;
 
 import com.jeetemplates.javaee.domain.HelloWorld;
+import com.jeetemplates.javaee.logging.Loggable;
 import com.jeetemplates.javaee.persistence.HelloWorldDao;
 import com.jeetemplates.javaee.rest.api.HelloWorldServiceRest;
 import com.jeetemplates.javaee.service.HelloWorldService;
-import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
-import com.jeetemplates.javaee.util.LoggerUtils;
-import com.jeetemplates.javaee.util.MapperUtils;
 
 /**
  * Implementation of {@link HelloWorldService}
  * 
  * @author jeetemplates
  */
-@Named
+@Stateless
+@Loggable
 public class HelloWorldServiceImpl implements HelloWorldService, HelloWorldServiceRest {
 
     /* ************************************ */
@@ -40,21 +38,14 @@ public class HelloWorldServiceImpl implements HelloWorldService, HelloWorldServi
     /* ************************************ */
 
     @Override
-    @Transactional
     public void create(HelloWorld entity) {
-        LoggerUtils.logStartMethod("create");
         helloWorldDao.create(entity);
-        LoggerUtils.logEndMethod("create");
     }
 
     @Override
-    public List<HelloWorldDTO> retrieveAll() {
-        LoggerUtils.logStartMethod("retrieveAll");
+    public List<HelloWorld> retrieveAll() {
         List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
-        @SuppressWarnings("unchecked")
-        List<HelloWorldDTO> returnValue = (List<HelloWorldDTO>) MapperUtils.mapAsList(listEntities, HelloWorldDTO.class);
-        LoggerUtils.logEndMethod("retrieveAll");
-        return returnValue;
+        return listEntities;
     }
 
     /* ************************************ */

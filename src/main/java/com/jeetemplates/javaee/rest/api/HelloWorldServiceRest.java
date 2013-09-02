@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
+import com.jeetemplates.javaee.domain.HelloWorld;
 
 /**
  * Hello world rest api.
@@ -28,6 +28,6 @@ public interface HelloWorldServiceRest {
     @Path("/retrieveAll")
     @GET
     @Produces(value = { MediaType.APPLICATION_JSON })
-    List<HelloWorldDTO> retrieveAll();
+    List<HelloWorld> retrieveAll();
 
 }

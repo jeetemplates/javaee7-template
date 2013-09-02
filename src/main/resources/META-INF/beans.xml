@@ -2,6 +2,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
 	version="1.1" bean-discovery-mode="all">
 
-	<!-- Leave it empty. Annotations are processed -->
+	<interceptors>
+		<class>com.jeetemplates.javaee.logging.LoggingInterceptor</class>
+		<class>com.jeetemplates.javaee.web.exception.ExceptionInterceptor</class>
+	</interceptors>
+	
+	
 
 </beans>

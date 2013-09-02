@@ -7,7 +7,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	<f:view locale="#{headerController.locale}">
+	<f:view locale="#{localeController.locale}">
 		<h:head>
 			<h:outputStylesheet name="common-style.css" library="css" />
 		</h:head>
@@ -16,17 +16,17 @@
 			<div id="page">
 				<div id="header">
 					<ui:insert name="header">
-						<ui:include src="/pages/template/header.xhtml" />
+						<ui:include src="/faces/template/header.xhtml" />
 					</ui:insert>
 				</div>
 				<div id="content">
 					<ui:insert name="content">
-						<ui:include src="/pages/template/content.xhtml" />
+						<ui:include src="/faces/template/content.xhtml" />
 					</ui:insert>
 				</div>
 				<div id="footer">
 					<ui:insert name="footer">
-						<ui:include src="/pages/template/footer.xhtml" />
+						<ui:include src="/faces/template/footer.xhtml" />
 					</ui:insert>
 				</div>
 			</div>

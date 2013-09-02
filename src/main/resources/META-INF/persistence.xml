@@ -2,19 +2,23 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="javaee7-template"
-		transaction-type="JTA">
+	<persistence-unit name="javaee7-template" transaction-type="JTA">
 		<!-- Start Glassfish configuration -->
 		<jta-data-source>jdbc/__default</jta-data-source>
 		<properties>
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <!-- Properties for EclipseLink -->
+            <property name="eclipselink.logging.level" value="INFO"/>
 		</properties>
 		<!-- End Glassfish configuration -->
 
 		<!-- Start WildFly configuration -->
 <!-- 		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source> -->
 <!-- 		<properties> -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+<!-- 				<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/> -->
+				<!-- Properties for Hibernate -->
+<!-- 	            <property name="hibernate.show_sql" value="true"/> -->
+<!-- 	            <property name="hibernate.format_sql" value="true"/> -->
 <!-- 		</properties> -->
 		<!-- End WildFly configuration -->
 

@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.dbunit.DatabaseUnitException;
+import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
@@ -57,7 +58,9 @@ public abstract class BaseDaoTest {
         entityManagerFactory = Persistence.createEntityManagerFactory("puTest");
         entityManager = entityManagerFactory.createEntityManager();
         connection = ((EntityManagerImpl) (entityManager.getDelegate())).getServerSession().getAccessor().getConnection();
-        dbunitConnection = new DatabaseConnection(connection, "JEETEMPLATES");
+        dbunitConnection = new DatabaseConnection(connection, "JUNIT");
+        DatabaseConfig dbCfg = dbunitConnection.getConfig();
+        dbCfg.setProperty(DatabaseConfig.FEATURE_CASE_SENSITIVE_TABLE_NAMES, Boolean.TRUE);
     }
 
     /**

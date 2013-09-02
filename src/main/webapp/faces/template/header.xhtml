@@ -9,10 +9,11 @@
 	<ui:composition>
 		<h1><h:outputText value="#{i18n['header']}" /></h1>
 		<h:form>
-			<h:commandLink value="en" action="#{headerController.setLanguage('en')}" /> 
+			<h:commandLink value="en" action="#{localeController.setLanguage('en')}" /> 
 			| 
-			<h:commandLink value="fr" action="#{headerController.setLanguage('fr')}" />
+			<h:commandLink value="fr" action="#{localeController.setLanguage('fr')}" />
 		</h:form>
+		<h:messages globalOnly="true" />
 	</ui:composition>
 </body>
 </html>

@@ -18,9 +18,8 @@
 		<mockito.version>1.9.5</mockito.version>
 		<dbunit.version>2.4.9</dbunit.version>
 		<derby.version>10.10.1.1</derby.version>
-		<!-- end Test -->
 		<slf4j.version>1.7.5</slf4j.version>
-		<orika.version>1.4.2</orika.version>
+		<!-- end Test -->
 	</properties>
 
 	<dependencies>
@@ -46,7 +45,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Hypersonic Database -->
+		<!-- Derby Database -->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
@@ -54,10 +53,19 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Eclipse link RI for JPA 2.1 -->
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>2.5.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- end Test -->
@@ -68,20 +76,7 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Logger -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- Mapping -->
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>orika-core</artifactId>
-			<version>${orika.version}</version>
-			<scope>compile</scope>
-		</dependency>
+
 	</dependencies>
 
 	<build>

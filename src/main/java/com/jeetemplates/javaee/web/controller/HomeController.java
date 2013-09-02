@@ -4,6 +4,7 @@
 package com.jeetemplates.javaee.web.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.FacesException;
@@ -11,11 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.jeetemplates.javaee.domain.HelloWorld;
+import com.jeetemplates.javaee.logging.LoggingProducer;
 import com.jeetemplates.javaee.service.HelloWorldService;
-import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
-import com.jeetemplates.javaee.util.LoggerUtils;
-import com.jeetemplates.javaee.util.MapperUtils;
-import com.jeetemplates.javaee.web.form.HelloWorldForm;
+import com.jeetemplates.javaee.web.exception.CatchException;
 
 /**
  * Welcome controller.
@@ -24,7 +23,8 @@ import com.jeetemplates.javaee.web.form.HelloWorldForm;
  */
 @Named
 @RequestScoped
-public class WelcomeController {
+@CatchException
+public class HomeController {
 
     /* ************************************ */
     /* Dependencies */
@@ -37,26 +37,39 @@ public class WelcomeController {
     private HelloWorldService helloWorldService;
 
     /**
-     * {@link HelloWorldService}
+     * {@link LoggingProducer}.
      */
     @Inject
-    private HelloWorldForm helloWorldForm;
+    private Logger logger;
 
     /* ************************************ */
     /* Attributes */
     /* ************************************ */
 
     /**
+     * New hello.
+     */
+    private HelloWorld newHello = new HelloWorld();
+    
+    /**
+     * Ajax hello.
+     */
+    private HelloWorld ajaxHello = new HelloWorld();
+
+    /**
      * List of hellos
      */
-    private List<HelloWorldDTO> listHellos;
+    private List<HelloWorld> listHellos;
 
     /* ************************************ */
     /* Methods */
     /* ************************************ */
 
     public String createHello() {
-        helloWorldService.create((HelloWorld) MapperUtils.map(helloWorldForm, HelloWorld.class));
+        if (newHello.getEmail() != null && newHello.getEmail().isEmpty()) {
+            newHello.setEmail(null);
+        }
+        helloWorldService.create(newHello);
         return "welcome?faces-redirect=true";
     }
 
@@ -65,10 +78,10 @@ public class WelcomeController {
      * 
      * @return list of hello dto
      */
-    public List<HelloWorldDTO> retrieveList() {
+    public List<HelloWorld> retrieveList() {
         // Prevent multiple calls from JSF
         if (listHellos == null) {
-            LoggerUtils.logDebug("Initialize hello world list for display");
+            logger.info("Initialize hello world list for display");
             listHellos = helloWorldService.retrieveAll();
         }
         return listHellos;
@@ -81,11 +94,11 @@ public class WelcomeController {
      */
     public String displayHelloAjax() {
         StringBuilder response = new StringBuilder();
-        String firstName = helloWorldForm.getFirstName();
+        String firstName = ajaxHello.getFirstName();
         if (firstName != null && firstName.length() > 0) {
             response.append(firstName);
         }
-        String lastName = helloWorldForm.getLastName();
+        String lastName = ajaxHello.getLastName();
         if (lastName != null && lastName.length() > 0) {
             response.append(" ");
             response.append(lastName);
@@ -103,17 +116,53 @@ public class WelcomeController {
      * @return outcome "welcome"
      */
     public String throwException() {
-        throw new FacesException();
+        throw new NullPointerException("Null pointer exception thrown for example");
     }
 
     /* ************************************ */
     /* Getters & Setters */
     /* ************************************ */
 
-    public void setHelloWorldForm(HelloWorldForm helloWorldForm) {
-        this.helloWorldForm = helloWorldForm;
+    /**
+     * @return the newHello
+     */
+    public HelloWorld getNewHello() {
+        return newHello;
     }
 
+    /**
+     * @param newHello
+     *            the newHello to set
+     */
+    public void setNewHello(HelloWorld newHello) {
+        this.newHello = newHello;
+    }
+
+    /**
+     * @return the ajaxHello
+     */
+    public HelloWorld getAjaxHello() {
+        return ajaxHello;
+    }
+
+    /**
+     * @param ajaxHello the ajaxHello to set
+     */
+    public void setAjaxHello(HelloWorld ajaxHello) {
+        this.ajaxHello = ajaxHello;
+    }
+
+    /**
+     * @return the helloWorldService
+     */
+    public HelloWorldService getHelloWorldService() {
+        return helloWorldService;
+    }
+
+    /**
+     * @param helloWorldService
+     *            the helloWorldService to set
+     */
     public void setHelloWorldService(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService;
     }

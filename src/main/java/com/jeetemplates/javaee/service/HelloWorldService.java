@@ -6,7 +6,6 @@ package com.jeetemplates.javaee.service;
 import java.util.List;
 
 import com.jeetemplates.javaee.domain.HelloWorld;
-import com.jeetemplates.javaee.service.dto.HelloWorldDTO;
 
 /**
  * Hello world service
@@ -28,6 +27,6 @@ public interface HelloWorldService {
      * 
      * @return
      */
-    List<HelloWorldDTO> retrieveAll();
+    List<HelloWorld> retrieveAll();
 
 }
