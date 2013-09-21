@@ -1,5 +1,6 @@
 javaee7-template
 ================
+- GlassFish 4 / Wildfly Alpha 4
 - CDI 1.1
 	Injection
 	Producers
@@ -12,4 +13,4 @@ javaee7-template
 
 Inspired by Antonio Goncalves book (http://www.amazon.com/Beginning-Java-EE-Antonio-Goncalves/dp/143024626X) and petstore (https://github.com/agoncal/agoncal-application-petstore-ee7)
 
-Deployment descriptors in utils.
+All deployment descriptors in utils.
