@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.javaee.web.controller;
+package com.jeetemplates.javaee.web.bean;
 
 import java.io.Serializable;
 import java.util.Locale;
@@ -15,9 +15,10 @@ import javax.inject.Named;
  * 
  * @author jeetemplates
  */
+//Annotation @Named mandatory for JSF beans
 @Named
 @SessionScoped
-public class LocaleController implements Serializable {
+public class LocaleBean implements Serializable {
 
     /**
      * Serial UID.

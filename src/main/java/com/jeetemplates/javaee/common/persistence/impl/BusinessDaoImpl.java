@@ -6,6 +6,7 @@ package com.jeetemplates.javaee.common.persistence.impl;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -33,7 +34,9 @@ public abstract class BusinessDaoImpl<BE extends BusinessEntity> implements Busi
     /* Dependencies */
     /* ************************************************************** */
 
-    @PersistenceContext
+    // @Produces is used to @Inject EntityManager
+    @Produces
+    @PersistenceContext(unitName = "javaee7-template")
     protected EntityManager entityManager;
 
     /* ************************************************************** */
@@ -51,10 +54,9 @@ public abstract class BusinessDaoImpl<BE extends BusinessEntity> implements Busi
         return entityManager.find(persistentClass, id);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<BE> retrieveAll() {
-        return entityManager.createQuery("from " + persistentClass.getName() + " entity").getResultList();
+        return entityManager.createQuery("from " + persistentClass.getName() + " entity", persistentClass).getResultList();
     }
 
     @Override

@@ -36,7 +36,7 @@ public abstract class BaseDaoTest {
     /**
      * {@link EntityManager}.
      */
-    private static EntityManager entityManager;
+    protected static EntityManager entityManager;
 
     /**
      * {@link Connection} : connection.
@@ -58,7 +58,7 @@ public abstract class BaseDaoTest {
         entityManagerFactory = Persistence.createEntityManagerFactory("puTest");
         entityManager = entityManagerFactory.createEntityManager();
         connection = ((EntityManagerImpl) (entityManager.getDelegate())).getServerSession().getAccessor().getConnection();
-        dbunitConnection = new DatabaseConnection(connection, "JUNIT");
+        dbunitConnection = new DatabaseConnection(connection, "junitdb");
         DatabaseConfig dbCfg = dbunitConnection.getConfig();
         dbCfg.setProperty(DatabaseConfig.FEATURE_CASE_SENSITIVE_TABLE_NAMES, Boolean.TRUE);
     }
@@ -73,6 +73,7 @@ public abstract class BaseDaoTest {
      */
     @Before
     public void init() throws DatabaseUnitException, SQLException, Exception {
+        initDao(entityManager);
         DatabaseOperation.CLEAN_INSERT.execute(dbunitConnection, getDataSet());
     }
 
@@ -96,5 +97,12 @@ public abstract class BaseDaoTest {
      * @throws Exception
      */
     protected abstract IDataSet getDataSet() throws Exception;
+
+    /**
+     * Init dao with the entity manager.
+     * 
+     * @param entityManager
+     */
+    protected abstract void initDao(EntityManager entityManager);
 
 }

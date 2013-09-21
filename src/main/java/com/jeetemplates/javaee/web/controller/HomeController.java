@@ -21,6 +21,7 @@ import com.jeetemplates.javaee.web.exception.CatchException;
  * 
  * @author jeetemplates
  */
+// Annotation @Named mandatory for JSF beans
 @Named
 @RequestScoped
 @CatchException

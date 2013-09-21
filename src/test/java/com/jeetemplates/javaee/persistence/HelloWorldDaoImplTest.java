@@ -6,7 +6,7 @@ package com.jeetemplates.javaee.persistence;
 import java.io.FileInputStream;
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
@@ -15,19 +15,25 @@ import org.junit.Test;
 
 import com.jeetemplates.javaee.common.persistence.BaseDaoTest;
 import com.jeetemplates.javaee.domain.HelloWorld;
+import com.jeetemplates.javaee.persistence.impl.HelloWorldDaoImpl;
 
 /**
  * Test of {@link HelloWorldDao}.
  * 
  * @author jeetemplates
  */
-public class HelloWorldDaoTest extends BaseDaoTest {
+public class HelloWorldDaoImplTest extends BaseDaoTest {
 
     /**
      * {@link HelloWorldDao}.
      */
-    @Inject
-    private HelloWorldDao helloWorldDao;
+    private HelloWorldDaoImpl helloWorldDaoImpl;
+    
+    @Override
+    protected void initDao(EntityManager entityManager) {
+        helloWorldDaoImpl = new HelloWorldDaoImpl();
+        helloWorldDaoImpl.setEntityManager(entityManager);
+    }
 
     /**
      * @see org.dbunit.DatabaseTestCase#getDataSet()
@@ -39,7 +45,7 @@ public class HelloWorldDaoTest extends BaseDaoTest {
 
     @Test
     public void testRetrieveAll() {
-        List<HelloWorld> results = helloWorldDao.retrieveAll();
+        List<HelloWorld> results = helloWorldDaoImpl.retrieveAll();
         Assert.assertNotNull(results);
         Assert.assertEquals(2, results.size());
     }
