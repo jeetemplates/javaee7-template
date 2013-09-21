@@ -11,6 +11,11 @@ javaee7-template
 - JAX-RS 2.2
 - Bean Validation 1.1
 
-Inspired by Antonio Goncalves book (http://www.amazon.com/Beginning-Java-EE-Antonio-Goncalves/dp/143024626X) and petstore (https://github.com/agoncal/agoncal-application-petstore-ee7)
+Tests with :
+- JUnit
+- DBUnit
+- Mockito
+
+Inspired by Antonio Goncalves book (http://www.amazon.com/Beginning-Java-EE-Antonio-Goncalves/dp/143024626X) and his petstore (https://github.com/agoncal/agoncal-application-petstore-ee7)
 
 All deployment descriptors in utils.
