@@ -7,7 +7,7 @@
 		<jta-data-source>jdbc/__default</jta-data-source>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <!-- Properties for EclipseLink -->
+<!--             Properties for EclipseLink -->
             <property name="eclipselink.logging.level" value="INFO"/>
 		</properties>
 		<!-- End Glassfish configuration -->
@@ -16,7 +16,7 @@
 <!-- 		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source> -->
 <!-- 		<properties> -->
 <!-- 				<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/> -->
-				<!-- Properties for Hibernate -->
+<!--  				Properties for Hibernate --> 
 <!-- 	            <property name="hibernate.show_sql" value="true"/> -->
 <!-- 	            <property name="hibernate.format_sql" value="true"/> -->
 <!-- 		</properties> -->
