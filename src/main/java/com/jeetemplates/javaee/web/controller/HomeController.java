@@ -11,6 +11,7 @@ import javax.faces.FacesException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.jeetemplates.javaee.configuration.InjectedConfiguration;
 import com.jeetemplates.javaee.domain.HelloWorld;
 import com.jeetemplates.javaee.logging.LoggingProducer;
 import com.jeetemplates.javaee.service.HelloWorldService;
@@ -21,7 +22,7 @@ import com.jeetemplates.javaee.web.exception.CatchException;
  * 
  * @author jeetemplates
  */
-// Annotation @Named mandatory for JSF beans
+// Annotation @Named mandatory for JSF beans to be processed by EL.
 @Named
 @RequestScoped
 @CatchException
@@ -42,6 +43,13 @@ public class HomeController {
      */
     @Inject
     private Logger logger;
+    
+    /**
+     * Message from configuration file.
+     */
+    @Inject
+    @InjectedConfiguration(key = "message", mandatory = true)
+    private String configurationMessage;
 
     /* ************************************ */
     /* Attributes */
@@ -166,6 +174,14 @@ public class HomeController {
      */
     public void setHelloWorldService(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService;
+    }
+
+    public String getConfigurationMessage() {
+        return configurationMessage;
+    }
+
+    public void setConfigurationMessage(String configurationMessage) {
+        this.configurationMessage = configurationMessage;
     }
 
 }

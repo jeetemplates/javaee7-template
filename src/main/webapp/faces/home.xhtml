@@ -72,6 +72,12 @@
 			</h:form>
 			<br/>
 			<h:outputLink id="jax-rs-link" value="#{request.contextPath}/rest/hello/retrieveAll"><h:outputText value="#{i18n['home.content.rest']}" /></h:outputLink>
+			<br/>
+			<br/>
+			<!-- ########################################################## -->
+			<!-- #################### Configuration message #################### -->
+			<!-- ########################################################## -->
+			<h:outputText value="#{homeController.configurationMessage}"></h:outputText>
 		</ui:define>
 	</ui:composition>
 
