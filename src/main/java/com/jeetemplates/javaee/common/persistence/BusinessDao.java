@@ -12,7 +12,7 @@ import com.jeetemplates.javaee.common.domain.BusinessEntity;
  * 
  * @author jeetemplates
  */
-public interface BusinessDao<BE extends BusinessEntity> {
+public interface BusinessDao<ID, BE extends BusinessEntity<ID>> {
 
 	/**
 	 * Create in database
@@ -28,7 +28,7 @@ public interface BusinessDao<BE extends BusinessEntity> {
 	 * @param id
 	 * @return
 	 */
-	BE retrieveById(Long id);
+	BE retrieveById(ID id);
 
 	/**
 	 * Retrieve all entries from database
@@ -60,6 +60,6 @@ public interface BusinessDao<BE extends BusinessEntity> {
 	 * @param id
 	 *            : entity's id to delete
 	 */
-	void deleteById(Long id);
+	void deleteById(ID id);
 
 }

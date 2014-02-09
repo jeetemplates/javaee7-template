@@ -16,7 +16,7 @@ import javax.persistence.MappedSuperclass;
  * @author jeetemplates
  */
 @MappedSuperclass
-public abstract class BusinessEntity implements Serializable {
+public abstract class BusinessEntity<ID> implements Serializable {
 
 	/**
 	 * Serial UID.
@@ -26,7 +26,7 @@ public abstract class BusinessEntity implements Serializable {
 	/**
 	 * Id.
 	 */
-	private Long id;
+	private ID id;
 
 	/**
 	 * @return the id
@@ -34,7 +34,7 @@ public abstract class BusinessEntity implements Serializable {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue
-	public Long getId() {
+	public ID getId() {
 		return id;
 	}
 
@@ -42,7 +42,7 @@ public abstract class BusinessEntity implements Serializable {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(ID id) {
 		this.id = id;
 	}
 

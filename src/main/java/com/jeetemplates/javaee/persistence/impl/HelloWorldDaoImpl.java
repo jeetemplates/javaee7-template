@@ -12,6 +12,6 @@ import com.jeetemplates.javaee.persistence.HelloWorldDao;
  * 
  * @author jeetemplates
  */
-public class HelloWorldDaoImpl extends BusinessDaoImpl<HelloWorld> implements HelloWorldDao {
+public class HelloWorldDaoImpl extends BusinessDaoImpl<Long, HelloWorld> implements HelloWorldDao {
 
 }

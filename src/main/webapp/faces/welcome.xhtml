@@ -14,7 +14,7 @@
 		<ui:define name="content">
 			<h3><h:outputText value="#{i18n['welcome.content.title']}" /></h3>
 			<h4>
-				<h:dataTable value="#{homeController.retrieveList()}" var="hello">
+				<h:dataTable value="#{homeController.hellos}" var="hello">
 					<h:column>#{hello.firstName}</h:column>
 					<h:column>#{hello.lastName}</h:column>
 					<h:column>#{hello.email}</h:column>

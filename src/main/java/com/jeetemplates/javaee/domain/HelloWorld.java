@@ -18,7 +18,7 @@ import com.jeetemplates.javaee.validation.Email;
  */
 @Entity
 @Table(name = "HELLO_WORLD")
-public class HelloWorld extends BusinessEntity {
+public class HelloWorld extends BusinessEntity<Long> {
 
     /**
      * Serial UID.
