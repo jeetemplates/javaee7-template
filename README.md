@@ -1,6 +1,6 @@
 javaee7-template
 ================
-- GlassFish 4 / Wildfly 8 Alpha 4
+- GlassFish 4 / Wildfly 8
 - CDI 1.1
 	Injection
 	Producers
