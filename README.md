@@ -21,3 +21,4 @@ Inspired by Antonio Goncalves book (http://www.amazon.com/Beginning-Java-EE-Anto
 Property file injection with classes @InjectedConfiguration and ConfigurationInjectionManager have been taken from this blog post : http://www.java-tutorial.ch/context-and-dependency-injection/property-file-configuration-using-injection-cdi
 
 All deployment descriptors in utils.
+
