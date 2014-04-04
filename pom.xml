@@ -89,6 +89,7 @@
 	</dependencies>
 
 	<build>
+                <finalName>javaee7-template</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
