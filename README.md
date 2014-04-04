@@ -22,3 +22,5 @@ Property file injection with classes @InjectedConfiguration and ConfigurationInj
 
 All deployment descriptors in utils.
 
+Demonstration available at http://javaee7-template.paoesco.cloudbees.net/
+
